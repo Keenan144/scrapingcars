@@ -1,0 +1,8 @@
+psuedo code
+
+
+first get a list of cars from KBB
+	get urls from cars
+		go deeper into the url and get the information on the car.
+
+Put each car into a array; ex [make, color,]
