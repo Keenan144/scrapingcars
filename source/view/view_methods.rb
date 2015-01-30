@@ -8,7 +8,7 @@ attr_reader :budget, :type_of_car
 	end
 
 	def welcome
-		puts "Welcome To" 
+		puts "~~~~~~Welcome To~~~~~~" 
 		sleep (0.8)
 		puts "~~~~Scraping Cars~~~~~"
 		sleep (0.8)
@@ -51,8 +51,8 @@ attr_reader :budget, :type_of_car
 		developers.each do |name|
 			puts name
 			sleep (0.7)
-			# clearscreen
 		end
+		loading
 	end
 
 	def what_type_of_car
@@ -77,8 +77,13 @@ attr_reader :budget, :type_of_car
 
 end
 
+
+
+#______driver__code_______#
+
+
+
 test = Viewer.new
 
 test.welcome
-test.loading
 test.what_type_of_car
