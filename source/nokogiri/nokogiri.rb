@@ -6,14 +6,12 @@ class Packager
   attr_reader :lux_urls, :packaged, :pre_sanitized
 
   def initialize
-    @lux_urls =  ["http://www.kbb.com/ford/focus/2015-ford-focus/s/?vehicleid=402987"]
+    @lux_urls =  ["http://www.kbb.com/tesla/model-s/2014-tesla-model-s/performance/?vehicleid=396060&intent=buy-new", "http://www.kbb.com/mercedes-benz/sls-class/2015-mercedes-benz-sls-class/sls-amg-gt-final-edition/?vehicleid=401749&intent=buy-new&category=luxury&options=", "http://www.kbb.com/bentley/flying-spur/2014-bentley-flying-spur/w12/?vehicleid=396043&intent=buy-new&category=luxury&options=", "http://www.kbb.com/rolls-royce/phantom/2014-rolls-royce-phantom/coupe/?vehicleid=399487&intent=buy-new&category=luxury","http://www.kbb.com/aston-martin/vantage/2015-aston-martin-vantage/v8-gt/?vehicleid=396495&intent=buy-new&category=luxury"]
     @packaged = []
     @pre_sanitized = []
-
   end
 
   def scraper
-
 
     @lux_urls.map do |url|
 
@@ -25,9 +23,11 @@ class Packager
         css_selector = "tr:eq(#{num})"
         @pre_sanitized << data.at_css(css_selector).text.gsub!(/\D/, '')
 
-        @packaged << @pre_sanitized.uniq!
       end
+      @packaged << @pre_sanitized
+      @pre_sanitized = []
     end
+
   end
 
 
@@ -36,5 +36,5 @@ end
 test = Packager.new
 # test.lux_urls
 test.scraper
-p test.sanitizer
-p test.pre_sanitized
+# p test.sanitizer
+p test.packaged
