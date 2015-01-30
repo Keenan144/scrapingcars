@@ -4,7 +4,8 @@
 class Viewer
 attr_reader :budget, :type_of_car
 	def initialize
-
+		@budget
+		@type_of_car
 	end
 
 	def welcome
@@ -57,7 +58,7 @@ attr_reader :budget, :type_of_car
 
 	def what_type_of_car
 		puts "What type of car are you looking for: "
-		puts "Truck, Car, Van"
+		puts "Sedan, Wagon, Crossover, Luxury, Coupe, SUV, Hybrid, Pick-Up"
 		@type_of_car = gets.chomp
 		2.times do loading_icon
 		end
@@ -65,16 +66,46 @@ attr_reader :budget, :type_of_car
 		how_much_money
 	end
 
+
+
 	def how_much_money
 		puts "How much money do you have to spend on this car?"
 		@budget = gets.chomp
-		list_cars
+		
 	end
 
-	def list_cars
+	def no_matches
+		puts "We are sorry, but no cars in our database match your search."
+	end
+
+	def matches
+		puts "our database query goes here"
+	end
+
+	def show_options
 		puts "Here are the cars in your range: "
+		 
+			if @type_of_car.downcase == "sedan" 
+				no_matches
+			elsif @type_of_car.downcase == "wagon" 
+				no_matches
+			elsif @type_of_car.downcase == "crossover" 
+				no_matches
+			elsif @type_of_car.downcase == "Luxury" || @budget.to_i > 70_000
+				matches
+			elsif @type_of_car.downcase == "coupe" 
+				no_matches
+			elsif @type_of_car.downcase == "suv" 
+				no_matches
+			elsif @type_of_car.downcase == "hybrid" 
+				no_matches
+			elsif @type_of_car.downcase == "pick-up" 
+				no_matches	
+			else 
+				no_matches
+				
+		end
 	end
-
 end
 
 
@@ -87,3 +118,9 @@ test = Viewer.new
 
 test.welcome
 test.what_type_of_car
+test.show_options
+
+
+
+
+
